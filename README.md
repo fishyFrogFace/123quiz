@@ -6,4 +6,5 @@
 
 ![How you will feel after this workshop](https://pbs.twimg.com/media/EZ2BmklXsAAdp8F?format=png&name=900x900)
 
+When you forget the .gitignore
 ![](https://pbs.twimg.com/media/EZnN-TnWoAU2pnk?format=jpg&name=900x900)
