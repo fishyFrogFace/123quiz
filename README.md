@@ -1,5 +1,5 @@
 
-## This repository does not yet contain anything, but it will be ready on the 26th of October 2020.
+## This repository does not yet contain anything, but it will be ready on the 2nd of November 2020.
 
 ## Some programming jokes while we wait:
 ![](https://pbs.twimg.com/media/EYEWojiWkAATNY9?format=png&name=small)
