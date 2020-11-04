@@ -1,10 +1,23 @@
+# 123quiz
 
-## This repository does not yet contain anything, but it will be ready on the 2nd of November 2020.
+An unfinished example React application. It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Some programming jokes while we wait:
-![](https://pbs.twimg.com/media/EYEWojiWkAATNY9?format=png&name=small)
+## Download the code
 
-![How you will feel after this workshop](https://pbs.twimg.com/media/EZ2BmklXsAAdp8F?format=png&name=900x900)
+```sh
+git clone https://github.com/fishyfrogface/123quiz.git
+cd 123quiz
+npm install
+```
 
-When you forget the .gitignore  
-![](https://pbs.twimg.com/media/EZnN-TnWoAU2pnk?format=jpg&name=900x900)
+## Run the app locally
+
+```sh
+npm start
+```
+
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
