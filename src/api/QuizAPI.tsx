@@ -1,4 +1,4 @@
-import { Question } from "../Types";
+import { Question, RawQuiz } from "../Types";
 
 // if you want to experiment with fallback components, you can set a delay here to get an artificial delay
 const MIN_DELAY_MS = 0;

@@ -38,16 +38,31 @@ export default function NavBar() {
             Quiz
           </Link>
           <Link
-            href="/component"
+            href="/greeting"
             color="inherit"
             className={
-              location.pathname === "/component" ? classes.active : "inactive"
+              location.pathname === "/greeting" ? classes.active : "inactive"
             }
           >
-            Component
+            Greeting
           </Link>
         </Typography>
       </Toolbar>
     </AppBar>
+  );
+}
+
+export function NoMatch() {
+  let location = useLocation();
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Typography variant="h1">404</Typography>
+        <Typography variant="h6">
+          The page {location.pathname} cannot be found
+        </Typography>
+      </header>
+    </div>
   );
 }
