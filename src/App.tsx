@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import NavBar from "./components/NavBar";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
@@ -9,7 +9,25 @@ interface AppState {
   selectedQuiz: string;
 }
 
-class App extends React.Component {
+const App = () => {
+  const [selectedQuiz, setSelectedQuiz] = useState("");
+
+  return (
+    <div>
+      <QuizList setSelectedQuiz={setSelectedQuiz} />
+      <NavBar />
+      <Container className="displace">
+        <Grid container justify="center" style={{ marginTop: "60px" }}>
+          <Grid item>
+            <Quiz />
+          </Grid>
+        </Grid>
+      </Container>
+    </div>
+  );
+};
+
+/* class App extends React.Component {
   state = {
     selectedQuiz: null
   };
@@ -50,6 +68,6 @@ class App extends React.Component {
       </div>
     );
   }
-}
+} */
 
 export default App;
