@@ -27,7 +27,11 @@ const App = () => {
           <Grid item>
             <Switch>
               <Route path="/quiz" exact component={Quiz} />
-              <Route path="/greeting" exact component={Greeting} />
+              <Route
+                path="/greeting"
+                exact
+                render={() => <Greeting name="Hermione" surname="Granger" />}
+              />
               <Route path="/" exact component={Quiz} />
               <Route path="*">
                 <NoMatch />

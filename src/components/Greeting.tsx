@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Typography, Container, TextField, Grid } from "@material-ui/core";
 
-export default function Greeting() {
-  const [name, setName] = useState("Harry");
-  const [surname, setSurname] = useState("Potter");
+interface GreetingProps {
+  name: string;
+  surname: string;
+}
+
+export default function Greeting(props: GreetingProps) {
+  const [name, setName] = useState(props.name);
+  const [surname, setSurname] = useState(props.surname);
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
