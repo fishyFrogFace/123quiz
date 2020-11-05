@@ -9,30 +9,31 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   drawer: {
     [theme.breakpoints.up("sm")]: {
       width: drawerWidth,
-      flexShrink: 0,
-    },
+      flexShrink: 0
+    }
   },
   // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth,
+    width: drawerWidth
   },
   black: {
-    color: "black",
-  },
+    color: "black"
+  }
 }));
 
 const titles = [
   "Linux",
-  "Networking",
   "DevOps",
-  "Programming",
-  "Cloud",
   "Docker",
+  "PHP",
+  "Javascript",
+  "Kubernetes",
+  "Laravel"
 ];
 
 interface QuizListProps {
@@ -46,10 +47,10 @@ export default function QuizList(props: QuizListProps) {
       variant="permanent"
       anchor="left"
       classes={{
-        paper: classes.drawerPaper,
+        paper: classes.drawerPaper
       }}
       ModalProps={{
-        keepMounted: true, // Better open performance on mobile.
+        keepMounted: true // Better open performance on mobile.
       }}
     >
       <div>
@@ -61,7 +62,7 @@ export default function QuizList(props: QuizListProps) {
         </List>
         <Divider light={true} />
         <List>
-          {titles.map((text) => (
+          {titles.map(text => (
             <ListItem
               button
               key={text}

@@ -19,8 +19,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function NavBar() {
   const classes = useStyles();
-  const location = { pathname: "we won't have this until we use a router" };
-  //const location = useLocation();
+  const location = useLocation();
 
   return (
     <AppBar className="displace" position="static">

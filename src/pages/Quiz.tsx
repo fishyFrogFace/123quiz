@@ -1,49 +1,29 @@
-import React, { useState } from "react";
+import { Typography } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
 import { fetchQuiz, toQuestionList } from "../api/QuizAPI";
+import { Question } from "../Types";
 
-const questions = [
-  {
-    questionText: "What is the capital of France?",
-    answerOptions: [
-      { answerText: "New York", isCorrect: false },
-      { answerText: "London", isCorrect: false },
-      { answerText: "Paris", isCorrect: true },
-      { answerText: "Dublin", isCorrect: false },
-    ],
-  },
-  {
-    questionText: "Who is CEO of Tesla?",
-    answerOptions: [
-      { answerText: "Jeff Bezos", isCorrect: false },
-      { answerText: "Elon Musk", isCorrect: true },
-      { answerText: "Bill Gates", isCorrect: false },
-      { answerText: "Tony Stark", isCorrect: false },
-    ],
-  },
-  {
-    questionText: "The iPhone was created by which company?",
-    answerOptions: [
-      { answerText: "Apple", isCorrect: true },
-      { answerText: "Intel", isCorrect: false },
-      { answerText: "Amazon", isCorrect: false },
-      { answerText: "Microsoft", isCorrect: false },
-    ],
-  },
-  {
-    questionText: "How many Harry Potter books are there?",
-    answerOptions: [
-      { answerText: "1", isCorrect: false },
-      { answerText: "4", isCorrect: false },
-      { answerText: "6", isCorrect: false },
-      { answerText: "7", isCorrect: true },
-    ],
-  },
-];
+interface QuizProps {
+  quizTopic: string;
+}
 
-export default function Quiz() {
+export default function Quiz(props: QuizProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
+  const [quiz, setQuiz] = useState<Question[]>([]);
+
+  useEffect(() => {
+    setQuiz([]);
+    if (!props.quizTopic) {
+      return;
+    } else {
+      setCurrentQuestion(0);
+      setScore(0);
+      setShowScore(false);
+      fetchQuiz(props.quizTopic).then(data => setQuiz(toQuestionList(data)));
+    }
+  }, [props.quizTopic]);
 
   const handleAnswerOptionClick = (isCorrect: boolean) => {
     if (isCorrect) {
@@ -51,31 +31,36 @@ export default function Quiz() {
     }
 
     const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < questions.length) {
+    if (nextQuestion < quiz.length) {
       setCurrentQuestion(nextQuestion);
     } else {
       setShowScore(true);
     }
   };
-  return (
+  return !props.quizTopic ? (
+    <Typography>No quiz selected</Typography>
+  ) : !quiz[currentQuestion] ? (
+    <Typography>Loading...</Typography>
+  ) : (
     <div className="app">
       {showScore ? (
         <div className="score-section">
-          You scored {score} out of {questions.length}
+          You scored {score} out of {quiz.length}
         </div>
       ) : (
         <>
           <div className="question-section">
             <div className="question-count">
-              <span>Question {currentQuestion + 1}</span>/{questions.length}
+              <span>Question {currentQuestion + 1}</span>/{quiz.length}
             </div>
             <div className="question-text">
-              {questions[currentQuestion].questionText}
+              {quiz[currentQuestion].questionText}
             </div>
           </div>
           <div className="answer-section">
-            {questions[currentQuestion].answerOptions.map(
-              (answerOption, index) => (
+            {quiz[currentQuestion].answerOptions
+              .filter(option => option.answerText)
+              .map((answerOption, index) => (
                 <button
                   key={index}
                   onClick={() =>
@@ -84,8 +69,7 @@ export default function Quiz() {
                 >
                   {answerOption.answerText}
                 </button>
-              )
-            )}
+              ))}
           </div>
         </>
       )}

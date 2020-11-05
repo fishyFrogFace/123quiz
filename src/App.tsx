@@ -26,13 +26,21 @@ const App = () => {
         <Grid container justify="center" style={{ marginTop: "60px" }}>
           <Grid item>
             <Switch>
-              <Route path="/quiz" exact component={Quiz} />
+              <Route
+                path="/quiz"
+                exact
+                render={() => <Quiz quizTopic={selectedQuiz} />}
+              />
               <Route
                 path="/greeting"
                 exact
                 render={() => <Greeting name="Hermione" surname="Granger" />}
               />
-              <Route path="/" exact component={Quiz} />
+              <Route
+                path="/"
+                exact
+                render={() => <Quiz quizTopic={selectedQuiz} />}
+              />
               <Route path="*">
                 <NoMatch />
               </Route>
